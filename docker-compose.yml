@@ -1,0 +1,32 @@
+# docker composerのバージョンの指定
+version: '3.8'
+services:
+  front:
+    # buildするdockerfileの位置
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # 作成するdockerコンテナの名前
+    container_name: node
+    # docker内と共有するフォルダの指定
+    volumes:
+      - ./front:/front
+    # docker内に入った時の初期パスの指定
+    working_dir: /front
+    command: > 
+      sh -c " npm install && 
+      npm start"
+    # //コンテナにバインドするポートの指定（左:自分のPCポート、右:dookerコンテナのポート）
+    ports:
+      - 3000:3000
+    # # コンテナが勝手に終了しないための設定
+    # tty: true
+    # # 標準入出力とエラー出力をコンテナに結びつける設定
+    # stdin_open: true
+    # # ホットリロードを行う設定,なくても良いいっぽい、、
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    # ホットリロードでデバッグビルドする方法
+    # docker-compose build
+    # docker-compose up
+    # あとはlocalhost:3000に繋ぐだけ
