@@ -3,7 +3,7 @@ $ docker-compose build
 $ docker-compose up
 あとはlocalhost:3000にアクセスするだけ
 
-PS C:\Users\ura.ALEX\source\repos\DockerTestReact> docker-compose up
+PS C:\Users\\source\repos\DockerTestReact> docker-compose up
 Creating node ... done
 Attaching to node
 node     |
